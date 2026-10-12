@@ -1,0 +1,44 @@
+[
+    {
+        "urun_kodu": "URN-0001",
+        "urun_adi": "Monitör",
+        "kategori": "Elektronik / Bilgisayar Bileşenleri / Monitörler",
+        "seo_etiketleri": [
+            "monitör",
+            "ekran",
+            "bilgisayar monitörü"
+        ],
+        "satis_aciklamasi": "Günlük işleriniz, oyun deneyiminiz veya profesyonel çalışmalarınız için tasarlanmış, yüksek görüntü kalitesi sunan standart monitör.",
+        "urun_aciklamasi": "Monitör",
+        "fiyat": 17500.0,
+        "stok": 10
+    },
+    {
+        "urun_kodu": "URN-0002",
+        "urun_adi": "Bilgisayar",
+        "kategori": "Elektronik / Bilgisayar",
+        "seo_etiketleri": [
+            "bilgisayar",
+            "masaüstü bilgisayar",
+            "teknoloji"
+        ],
+        "satis_aciklamasi": "Günlük işlerinizi kolaylaştıran, temel ihtiyaçlarınıza yönelik tasarlanmış standart bilgisayar modeli.",
+        "urun_aciklamasi": "Bilgisayar",
+        "fiyat": 23000.0,
+        "stok": 12
+    },
+    {
+        "urun_kodu": "URN-0003",
+        "urun_adi": "Bilgisayar",
+        "kategori": "Elektronik / Bilgisayar & Tablet",
+        "seo_etiketleri": [
+            "bilgisayar",
+            "dizüstü bilgisayar",
+            "masaüstü bilgisayar"
+        ],
+        "satis_aciklamasi": "Günlük işlerinizi, eğitim süreçlerinizi veya profesyonel projelerinizi yönetebileceğiniz, ihtiyaçlarınıza uygun performans seçenekleri sunan bilgisayar modelleri.",
+        "urun_aciklamasi": "Bilgisayar",
+        "fiyat": 2100.0,
+        "stok": 12
+    }
+]
