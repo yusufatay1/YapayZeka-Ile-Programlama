@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Üye Ol - Neon Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #080711;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+
+        .bg-glow-purple {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: #7c3aed;
+            filter: blur(150px);
+            border-radius: 50%;
+            top: 10%;
+            left: 15%;
+            opacity: 0.45;
+            z-index: 0;
+        }
+
+        .bg-glow-blue {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: #0284c7;
+            filter: blur(160px);
+            border-radius: 50%;
+            bottom: 10%;
+            right: 15%;
+            opacity: 0.45;
+            z-index: 0;
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 440px;
+            background: rgba(18, 16, 38, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 40px 32px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            margin: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c084fc, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .alert-box {
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 13px 16px;
+            padding-right: 45px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .toggle-password:hover {
+            color: #38bdf8;
+        }
+
+        .error-message {
+            color: #f87171;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #9333ea, #0284c7);
+            border: none;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(147, 51, 234, 0.7), 0 0 35px rgba(2, 132, 199, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .links-container {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .links-container a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .links-container a:hover {
+            color: #c084fc;
+            text-shadow: 0 0 8px rgba(192, 132, 252, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-glow-purple"></div>
+    <div class="bg-glow-blue"></div>
+
+    <div class="card">
+        <div class="header">
+            <h1>Yeni Hesap Oluştur</h1>
+            <p>Aramıza katılmak için formu doldurun</p>
+        </div>
+
+        <div id="alertBox" class="alert-box">
+            Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...
+        </div>
+
+        <form id="signupForm" novalidate>
+            <div class="form-group">
+                <label for="fullname">Ad Soyad</label>
+                <div class="input-wrapper">
+                    <input type="text" id="fullname" placeholder="Ahmet Yılmaz">
+                </div>
+                <div class="error-message" id="fullnameError">Lütfen adınızı ve soyadınızı giriniz.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">E-posta Adresi</label>
+                <div class="input-wrapper">
+                    <input type="email" id="email" placeholder="ornek@domain.com">
+                </div>
+                <div class="error-message" id="emailError">Geçerli bir e-posta adresi giriniz.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" placeholder="••••••••">
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password', this)">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+                <div class="error-message" id="passwordError">Şifre en az 6 karakter olmalıdır.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Şifre Tekrarı</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirmPassword" placeholder="••••••••">
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+                <div class="error-message" id="confirmPasswordError">Şifreler eşleşmiyor.</div>
+            </div>
+
+            <button type="submit" class="btn-submit">Üye Ol</button>
+        </form>
+
+        <div class="links-container">
+            <span>Zaten hesabınız var mı? <a href="index.html">Giriş Yap</a></span>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullname = document.getElementById('fullname');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            
+            const fullnameError = document.getElementById('fullnameError');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const confirmPasswordError = document.getElementById('confirmPasswordError');
+            const alertBox = document.getElementById('alertBox');
+            
+            let isValid = true;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!fullname.value.trim()) {
+                fullnameError.style.display = 'block';
+                fullname.style.borderColor = '#f87171';
+                isValid = false;
+            } else {
+                fullnameError.style.display = 'none';
+                fullname.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+            }
+
+            if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+                emailError.style.display = 'block';
+                email.style.borderColor = '#f87171';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+                email.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+            }
+
+            if (!password.value.trim() || password.value.length < 6) {
+                passwordError.style.display = 'block';
+                password.style.borderColor = '#f87171';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+                password.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+            }
+
+            if (!confirmPassword.value.trim() || confirmPassword.value !== password.value) {
+                confirmPasswordError.style.display = 'block';
+                confirmPassword.style.borderColor = '#f87171';
+                isValid = false;
+            } else {
+                confirmPasswordError.style.display = 'none';
+                confirmPassword.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+            }
+
+            if (isValid) {
+                alertBox.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
